@@ -1,6 +1,6 @@
-const RealTimeConvolution = require("./RealTimeConvolution");
+const realTimeConvolutionIntegrator = require("./RealTimeConvolution");
 const SecondOrder = require("./SecondOrder");
-const StaticConvolution = require("./StaticConvolution");
+const staticConvolutionIntegrator = require("./StaticConvolution");
 
 /**
  * Class jsLSA: Algorithm for integrating a signal in a second-order nonlinear system.
