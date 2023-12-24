@@ -1,6 +1,6 @@
 {
   "name": "jslsa",
-  "version": "1.0.4",
+  "version": "1.0.0",
   "description": "A simulation algorithm for responses of a second-order nonlinear system to a given input. Works for both static and real-time analysis",
   "main": "./src/index.js",
   "scripts": {

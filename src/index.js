@@ -154,7 +154,7 @@ class jsLSA {
     );
 
     this.outputAnalys.push(outputRTData);
-    return this.outputAnalys;
+    return outputRTData;
   }
 }
 
