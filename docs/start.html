@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>jsLSA For developers and investigators</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS -->
+    <script defer src="assets/fontawesome/js/all.js"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* Estilo para el bloque de código */
+        code {
+            background-color: #f4f4f4;
+            padding: 0.5em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #333;
+            display: block;
+            overflow-x: auto;
+            margin-bottom: 1em;
+        }
+
+        /* Estilo para el texto dentro del bloque de código */
+        code span {
+            color: #0077cc;
+        }
+
+        /* Estilo para la línea actual resaltada */
+        code .current-line {
+            background-color: #ffe8c1;
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="body-green">
+    <div class="page-wrapper">
+        <!-- ******Header****** -->
+        <header id="header" class="header">
+            <div class="container">
+                <div class="branding">
+                    <h1 class="logo">
+                        <span aria-hidden="true" class="icon_documents_alt icon"></span>
+                        <span class="text-highlight">js</span><span class="text-bold">LSA</span>
+                    </h1>
+
+                </div><!--//branding-->
+
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Quick Start</li>
+                </ol>
+
+            </div><!--//container-->
+        </header><!--//header-->
+        <div class="doc-wrapper">
+            <div class="container">
+                <div id="doc-header" class="doc-header text-center">
+                    <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> Quick Start</h1>
+                    <div class="meta"><i class="far fa-clock"></i> Last updated: Dec 24th</div>
+                </div><!--//doc-header-->
+                <div class="doc-body row">
+                    <div class="doc-content col-md-9 col-12 order-1">
+                        <div class="content-inner">
+                            <section id="download-section" class="doc-section">
+                                <h2 class="section-title">Download</h2>
+                                <div class="section-block">
+                                    <p>jsLSA can be directly downloaded from the GitHub repository.</p>
+                                    </p>
+                                    <a href="https://github.com/TIMdavidIglesias/jsLSA/" class="btn btn-green"
+                                        target="_blank"><i class="fas fa-download"></i> Download jsLSA</a>
+                                </div>
+                            </section><!--//doc-section-->
+                            <section id="installation-section" class="doc-section">
+                                <h2 class="section-title">Installation</h2>
+                                <div id="step1" class="section-block">
+                                    <h3 class="block-title">Import the library</h3>
+                                    <p>jsLSA can be imported directly from the Node Package Manager (NPM) or Yarn. Use
+                                        the following commands:</p>
+                                    </p>
+                                    <div class="code-block">
+                                        <h6>NPM:</h6>
+                                        <p><code>npm -i jslsa</code></p>
+                                        <h6>Yarn:</h6>
+                                        <p><code>yarn add jslsa</code></p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+
+                            <section id="usage-section" class="doc-section">
+                                <h2 class="section-title">Usage</h2>
+                                <div class="section-block">
+                                    <p>To use jsLSA in your project, you first need to create a new instance of the
+                                        class. The basic syntax is as follows:</p>
+                                    <code
+                                        class="language-javascript">const system = new jsLSA(Wn, Zeta, K, At, maxRealTimeSamples = 2000);</code>
+                                </div><!--//section-block-->
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Parameter</th>
+                                            <th></th>
+                                            <th>Description (English)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Wn</td>
+                                            <td>ωₙ</td>
+                                            <td>Undamped Natural Frequency</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Zeta</td>
+                                            <td>ζ</td>
+                                            <td>Damping Coefficient</td>
+                                        </tr>
+                                        <tr>
+                                            <td>K</td>
+                                            <td></td>
+                                            <td>Gain or Amplification</td>
+                                        </tr>
+                                        <tr>
+                                            <td>At</td>
+                                            <td>Δt</td>
+                                            <td>Differential Time Step</td>
+                                        </tr>
+                                        <tr>
+                                            <td>maxRealTimeSamples</td>
+                                            <td></td>
+                                            <td>Maximum Real-Time Samples</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div id="static" class="section-block">
+                                    <h3 class="block-title">Static Analysis</h3>
+                                    <p>jsLSA requires a input float array as parameter:</p>
+                                    <code class="language-javascript">
+                                        const input = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1 ...]
+                                    </code>
+
+                                    <canvas id="staticChart" width="400" height="200"></canvas>
+
+
+
+                                    <code class="language-javascript">
+                                    const staticAnalysis = system.simpleLinearSimulation(input);
+                                </code>
+
+                                    <canvas id="staticChartRes" width="400" height="200"></canvas>
+                                    <p>Response for a transfer function with the following params:</p>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Parameter</th>
+                                                <th>Value</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Wn (ωₙ)</td>
+                                                <td>2.4</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Zeta (ζ)</td>
+                                                <td>0.2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>K</td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>At (Δt)</td>
+                                                <td>0.1</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!--//section-block-->
+
+                                <div id="realtime" class="section-block">
+                                    <h3 class="block-title">Real-Time Analysis</h3>
+                                    <p>jsLSA requires a input float point as parameter:</p>
+                                    <code class="language-javascript">
+                                        const realTimeAnalysis = system.realTimeLinearSimulation(input);
+                                    </code>
+                                    <script
+                                        src="https://gist.github.com/TIMdavidIglesias/936f7b8feea247e86df4720edbd4ce50.js"></script>
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="examples-section" class="doc-section">
+                                <h2 class="section-title">Examples</h2>
+                                <div class="section-block">
+                                    <p>You can find live examples of static and real-time analysyswithin the following
+                                        link:
+                                    </p>
+                                    <iframe
+                                        src="https://codesandbox.io/embed/428ylt?view=preview&module=%2Fsrc%2FApp.js"
+                                        style="width:100%; height: 500px; border:0; border-radius: 4px; overflow:hidden;"
+                                        title="xenodochial-violet-428ylt"
+                                        allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+                                        sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+                                </div>
+                            </section><!--//doc-section-->
+                        </div><!--//content-inner-->
+                    </div><!--//doc-content-->
+                    <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
+                        <div id="doc-nav" class="doc-nav">
+                            <nav id="doc-menu" class="nav doc-menu flex-column sticky">
+                                <li class="nav-item">
+                                    <a class="nav-link scrollto" href="#download-section">Download</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link scrollto" href="#installation-section">Installation</a>
+                                </li>
+                                <nav class="nav doc-sub-menu nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="#step1">Import the library</a>
+                                    </li>
+                                </nav><!--//nav-->
+                                <li class="nav-item">
+                                    <a class="nav-link scrollto" href="#usage-section">Usage</a>
+                                </li>
+
+                                <nav class="nav doc-sub-menu nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="#usage">Static Analysis</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link scrollto" href="#realtime">RealTime Analysis</a>
+                                    </li>
+                                </nav><!--//nav-->
+                                <li class="nav-item">
+                                    <a class="nav-link scrollto" href="#examples-section">Examples</a>
+                                </li>
+                            </nav><!--//doc-menu-->
+
+                        </div>
+                    </div><!--//doc-sidebar-->
+                </div><!--//doc-body-->
+            </div><!--//container-->
+        </div><!--//doc-wrapper-->
+    </div><!--//page-wrapper-->
+
+    <footer id="footer" class="footer text-center">
+        <div class="container">
+            <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+            <small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart"></i> by <a
+                    href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>
+
+        </div><!--//container-->
+    </footer><!--//footer-->
+
+
+    <!-- Main Javascript -->
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/prism/prism.js"></script>
+    <script src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
+    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script>
+    <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+
+    <script>
+        const input = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+
+        const response = [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0.02776729823522084,
+            0.1061336830161076,
+            0.22618412712914027,
+            0.37754126046071224,
+            0.5490664386098449,
+            0.7295382486159645,
+            0.9082734310036521,
+            1.075661550447963,
+            1.2235920858618246,
+            1.3457604432905834,
+            1.4378472483239926,
+            1.4975727176531015,
+            1.5246345726570085,
+            1.5205435486653616,
+            1.488374864396257,
+            1.4324569285484703,
+            1.3580200434415357,
+            1.2708279687498303,
+            1.176814052427149,
+            1.0817413993019922,
+            0.9909034517108849,
+            0.9088776488313333,
+            0.8393407707179069,
+            0.784950413691805,
+            0.7472930220643332,
+            0.7268952244034741,
+            0.7232920600764501,
+            0.7351431593995383,
+            0.760386137680318,
+            0.7964154124518797,
+            0.8402743428780334,
+            0.8888489698173533,
+            0.9390526204844276,
+            0.9879921237101617,
+            1.0331082340141273,
+            1.0722849499397737,
+            1.1039245987691415,
+            1.1269877172063751,
+            1.1409987706468265,
+            1.146020525423681,
+            1.1426013441875407,
+            1.131700763682795,
+            1.1145994106710153,
+            1.0927996134861464,
+            1.0679229933305667,
+            1.0416109092818584,
+            1.0154329373209365,
+            0.9908076503796893,
+            0.9689389034669857,
+            0.9507696871606919,
+            0.9369544636275278,
+            0.9278498054263989,
+            0.9235221734009984,
+            0.923770839690238,
+            0.9281633165955867,
+            0.9360802100802054,
+            0.9467661835813762,
+            0.9593836872165008,
+            0.9730662624911509,
+            0.986968547809949,
+            1.0003105535586823,
+            1.012414311287946,
+            1.022731591852568,
+            1.0308619949864526,
+            1.0365613029237264,
+            1.0397405326597715,
+            1.0404565900633067,
+            1.0388958054046702,
+            1.0353519018304198,
+            1.0302001105803935,
+            1.0238692004826917,
+            1.0168131414714074,
+            1.009483984457169,
+            1.0023073285563857,
+            0.995661479767534,
+            0.9898611023500055,
+            0.9851458452528838,
+            0.9816741098600483,
+            0.9795218290819389,
+            0.9786858658084633,
+            0.9790914221308982,
+            0.9806026872260474,
+            0.9830358454510097,
+            0.9861735176012433,
+            0.9897797148082234,
+            0.9936144407939217,
+            0.9974471765325975,
+            1.001068612568288,
+            1.0043001481195348,
+            1.0070008421837355,
+            1.0090716699378173,
+            1.0104570984490533,
+            1.011144140949599,
+            1.0111591721688407,
+            1.0105628837365375,
+            1.0094438256373608,
+            1.007911016158502,
+            1.0060861095260243,
+            1.0040955898226984,
+            1.0020634154504702,
+            1.0001044749392467,
+            0.9983191375303837,
+            0.9967890961805915,
+            0.9955746118985119,
+            0.9947131817620638,
+            0.9942195731027292,
+            0.9940870969348816,
+            0.9942899375908908,
+            0.9947863145467764,
+            0.9955222274423453,
+            0.9964355262152973,
+            0.9974600541221984,
+            0.9985296305231842,
+            0.9995816704046897,
+            1.0005602760540193,
+            1.001418680216523,
+            1.0021209665587196,
+            1.0026430395519217,
+            1.0029728594689993,
+            1.0031099969183015,
+            1.0030645935500835,
+            1.0028558400982643,
+            1.0025100991266767,
+            1.0020588076100272,
+            1.0015362941444226,
+            1.0009776379099518,
+            1.0004166825894314,
+            0.9998842996154956,
+            0.9994069728518471,
+            0.9990057526450954,
+            0.9986956026064515,
+            0.9984851388783079,
+            0.9983767402105136,
+            0.9983669888873083,
+            0.9984473881197666,
+            0.9986052913856027,
+            0.9988249735191962,
+            0.9990887720324039,
+            0.9993782298546169,
+            0.9996751769016765,
+            0.9999626969560644,
+            1.000225937508276,
+            1.0004527326693569,
+            1.0006340222178438,
+            1.000764062537665,
+            1.0008404369669157,
+            1.0008638833529786,
+            1.0008379649717731,
+            1.0007686171360124,
+            1.0006636056531142,
+            1.0005319348015855,
+            1.0003832418058802,
+            1.000227212142713,
+            1.0000730457304903,
+            0.9999289985215093,
+            0.9998020176507512,
+            0.9996974815196962,
+            0.9996190494164618,
+            0.9995686188652906,
+            0.999546383175486,
+            0.9995509768724058,
+            0.9995796930170959,
+            0.9996287539558047,
+            0.9996936158098507,
+            0.999769286974426,
+            0.9998506419353432,
+            0.9999327136795443,
+            1.0000109506760904,
+            1.0000814276245094,
+            1.0001410026832591,
+            1.0001874174834298,
+            1.000219339698293,
+            1.000236351100117,
+            1.0002388867469216,
+            1.000228133096502,
+            1.0002058943762941,
+            1.000174437418833,
+            1.000136325415046,
+            1.0000942506865906,
+            1.0000508757074498,
+            1.0000086903091991,
+            0.9999698913935089,
+            0.9999362896663931,
+            0.9999092460185115,
+            0.9998896383152007,
+            0.9998778576278592,
+            0.999873831417728,
+            0.9998770699377635,
+            0.9998867311910534,
+            0.9999016991966536,
+            0.9999206700668454,
+            0.9999422404759296,
+            0.9999649934660765,
+            0.9999875771439632,
+            1.0000087726175086,
+            1.0000275484443024,
+            1.0000430998503227,
+            1.0000548719693738,
+            1.0000625672956875,
+            1.0000661383874077,
+            1.0000657675698428,
+            1.000061835937875,
+            1.00005488433131,
+            1.0000455691509698,
+            1.000034615902809,
+            1.0000227732172315,
+            1.0000107698133465,
+            0.9999992764908667,
+            0.9999888747669019,
+            0.9999800332636698,
+            0.9999730924282475,
+            0.9999682576568781,
+            0.9999656004303289,
+            0.9999650666649433,
+            0.9999664911624366,
+            0.9999696168103749,
+            0.9999741170490108,
+            0.9999796200774815,
+            0.9999857333170811,
+            0.9999920667709489,
+            0.9999982541043863,
+            1.0000039705022272,
+            1.0000089466222208,
+            1.0000129782391098,
+            1.0000159314467327,
+            1.0000177435404056,
+            1.0000184199267723,
+            1.0000180275936452,
+            1.00001668581166,
+            1.00001455482936,
+            1.0000118233632955,
+            1.0000086956772118,
+            1.0000053789941674,
+            1.0000020718991476,
+            0.9999989542753986,
+            0.9999961791841584,
+            0.9999938669537367,
+            0.9999921015987889,
+            0.9999909295522066,
+            0.9999903605672475,
+            0.9999903705419444,
+            0.9999909059354534,
+            0.9999918893892336,
+            0.9999932261355261,
+            0.9999948107707892,
+            0.9999965339904552,
+            0.9999982889204404,
+            0.9999999767362465,
+            1.0000015113277343,
+            1.0000028228419542,
+            1.0000038600130865,
+            1.0000045912631643,
+            1.0000050046259306,
+            1.0000051066057192,
+            1.0000049201312138,
+            1.0000044817987812,
+            1.0000038386210832,
+            1.0000030445039694,
+            1.0000021566690878,
+            1.000001232222721,
+            1.0000003250450007,
+            0.9999994831402093,
+            0.9999987465507888,
+            0.9999981458974753,
+            0.9999977015680404,
+            0.9999974235396099,
+            0.9999973117862785,
+            0.9999973571961621,
+            0.9999975429011346,
+            0.9999978459087894,
+            0.9999982389197621,
+            0.9999986922141155,
+            0.9999991754973556,
+            0.999999659608877,
+            1.0000001180120466,
+            1.0000005280044681,
+            1.000000871607891,
+            1.0000011361184453,
+            1.0000013143182214,
+            1.0000014043676262,
+            1.0000014094136245,
+            1.00000133696128,
+            1.0000011980646168,
+            1.0000010063975662,
+            1.0000007772667536,
+            1.0000005266254104,
+            1.0000002701422077,
+            1.000000022370876,
+            0.999999796056778,
+            0.9999996016057969,
+            0.9999994467297123,
+            0.9999993362712936,
+            0.9999992722022188,
+            0.9999992537781142,
+            0.9999992778278565,
+            0.9999993391490374,
+            0.9999994309782543,
+            0.9999995455036759,
+            0.9999996743879934,
+            0.9999998092722261,
+            0.9999999422345943,
+            1.0000000661834925,
+            1.000000175169115,
+            1.0000002646041481,
+            1.0000003313897883,
+            1.000000373948866,
+            1.000000392172768,
+            1.000000387292947,
+            1.0000003616909485,
+            1.0000003186629651,
+            1.0000002621559465,
+            1.0000001964922995,
+            1.0000001260992621,
+            1.0000000552573225
+        ]
+
+        const ctx = document.getElementById('staticChart').getContext('2d');
+        const ctxRes = document.getElementById('staticChartRes').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: input.map((_, index) => index + 1),
+                datasets: [{
+                    label: 'Step',
+                    data: input,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    pointRadius: 0.5,
+                    pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                }],
+            },
+            options: {
+                scales: {
+                    x: {
+                        position: 'bottom',
+                    },
+                    y: {
+                        min: -0.1,
+                        max: 1.1,
+                    },
+                },
+            },
+        });
+
+        const chart2 = new Chart(ctxRes, {
+            type: 'line',
+            data: {
+                labels: input.map((_, index) => index + 1),
+                datasets: [{
+                    label: 'Input',
+                    data: input,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    pointRadius: 0.5,
+                    pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                },
+                {
+                    label: 'Step',
+                    data: response,
+                    backgroundColor: 'rgba(50, 100, 255, 0.2)',
+                    borderColor: 'rgba(50, 100, 255, 1)',
+                    borderWidth: 2,
+                    pointRadius: 0,
+                    pointBackgroundColor: 'rgba(50, 100, 255, 1)',
+                }],
+            },
+            options: {
+                scales: {
+                    x: {
+                        position: 'bottom',
+                    },
+                    y: {
+                        min: -0,
+                        max: 1.6,
+                    },
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>

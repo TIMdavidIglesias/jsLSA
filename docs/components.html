@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap project documentation theme for developers</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS -->
+    <script defer src="assets/fontawesome/js/all.js"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/plugins/prism/prism.css">
+    <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">
+    <link rel="stylesheet" href="assets/plugins/simplelightbox/simple-lightbox.min.css">
+
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+
+</head>
+
+<body class="body-pink">
+    <div class="page-wrapper">
+        <!-- ******Header****** -->
+        <header id="header" class="header">
+            <div class="container">
+                <div class="branding">
+                    <h1 class="logo">
+                        <span aria-hidden="true" class="icon_documents_alt icon"></span>
+                        <span class="text-highlight">js</span><span class="text-bold">LSA</span>
+                    </h1>
+
+                </div><!--//branding-->
+
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Engineering behind</li>
+                </ol>
+
+            </div><!--//container-->
+        </header><!--//header-->
+        <div class="doc-wrapper">
+            <div class="container">
+                <div id="doc-header" class="doc-header text-center">
+                    <h1 class="doc-title"><span aria-hidden="true" class="icon icon_puzzle_alt"></span> Engineering
+                        behind</h1>
+                    <div class="meta"><i class="far fa-clock"></i> Last updated: Dec 24th</div>
+                </div><!--//doc-header-->
+                <div class="doc-body row">
+                    <div class="doc-content col-md-9 col-12 order-1">
+                        <div class="content-inner">
+                            <section id="Overview" class="doc-section">
+                                <h2 class="section-title">jsLSA Overview</h2>
+                                <div class="section-block">
+                                    <p>
+                                        Fundamentally, jsLSA functions as an integrator crafted for Second-Order
+                                        nonlinear systems. It operates in two primary modes:
+                                    </p>
+                                    <h6>Static Mode:</h6>
+                                    <p>
+
+                                        In this mode, an array of 'Y' values is provided, and jsLSA returns a
+                                        corresponding
+                                        array of 'U' values. Each element in the array signifies the 'y' value of the
+                                        function for each Δt.
+                                    </p>
+                                    <h6>Real-Time Mode:</h6>
+                                    <p>
+
+                                        This mode starts with an empty array. In each iteration, a value is supplied
+                                        that
+                                        corresponds to the 'y' value of the graph at that particular point. Visualize
+                                        the
+                                        graph dynamically evolving in real-time. The algorithm retains the previous
+                                        output
+                                        array, continually extending it (up to a defined position), and discarding the
+                                        earliest elements to make room for the latest ones. The integration is then
+                                        recalculated with the new data point, yielding an updated graph. </p>
+
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+
+                            <section id="Mathematical" class="doc-section">
+                                <h2 class="section-title">Mathematical Principles</h2>
+                                <div id="integratior" class="section-block">
+                                    <h3 class="block-title">Programatic integratior</h3>
+                                    <p>Mainly, it is necessary to grasp the concept of integration visually in order to
+                                        create an integration method</p>
+                                    <div class="row simplelightbox-gallery-2">
+                                        <div class="col-md-6 col-12">
+                                            <h6>Definited Riemann Integral</h6>
+                                            <div class="screenshot-holder">
+                                                <a href="assets/images/demo/appify-projects.jpg"><img class="img-fluid"
+                                                        src="assets/images/Integral Definida.png"
+                                                        alt="screenshot" /></a>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <h6>Integral concept</h6>
+                                            <div class="screenshot-holder">
+                                                <a href="assets/images/demo/appify-project.jpg"><img class="img-fluid"
+                                                        src="assets/images/ingretions.png" alt="screenshot" /></a>
+
+                                            </div>
+                                        </div>
+
+                                        <p>The interpretation of the integration can be defined as the code below:</p>
+                                        <h6>Integral as a discretized sum of elements</h6>
+                                        <script
+                                            src="https://gist.github.com/TIMdavidIglesias/fc71aa5b72a01caed0472ad488bcbbe3.js"></script>
+
+                                    </div><!--//row-->
+                                </div><!--//section-block-->
+
+                                <div id="Systems" class="section-block">
+                                    <h3 class="block-title">Second Order Systems</h3>
+                                    <p>A transfer function is a mathematical representation of the relationship between
+                                        the input and output of a linear time-invariant system. It is commonly used in
+                                        the field of control theory and dynamic systems analysis. The transfer function
+                                        is expressed as the ratio of the Laplace transforms of the system's output to
+                                        its input. This representation is particularly useful for analyzing and
+                                        designing control systems, as it provides insights into how the system responds
+                                        to different frequencies and input signals. Transfer functions are a fundamental
+                                        concept in understanding the behavior of dynamic systems in engineering and
+                                        related fields</p>
+                                    <div class="row simplelightbox-gallery-2">
+                                        <div class="col-md-6 col-12">
+                                            <h6>Second order differential equation</h6>
+                                            <p style="text-align: center;">
+                                                \[
+                                                a \frac{d^2y}{dt^2} + b \frac{dy}{dt} + cy = f(t)
+                                                \]
+                                            </p>
+
+                                            <h6>For systems with amplification</h6>
+                                            <p>Some systems have the feature to amplify
+                                                the output signal. In this point of view the Differential Equation
+                                                displays as follows:</p>
+                                            <p style="text-align: center;">
+                                                \( \frac{d^2y}{dt^2} + 2\zeta\omega_n \frac{dy}{dt} + \omega_n^2y =
+                                                Kx(t) \)
+
+                                            <ul style="text-align: left;">
+                                                <li><strong>K:</strong> System gain or amplification.</li>
+                                                <li><strong>ω<sub>n</sub>:</strong> Undamped natural frequency of
+                                                    the system.</li>
+                                                <li><strong>ζ:</strong> Damping coefficient (damping ratio).</li>
+                                            </ul>
+                                            </p>
+
+                                            <h6>Laplacian interpretation of the system with Amplification</h6>
+                                            <p style="text-align: center;">
+                                                \( Y(s) = \frac{K}{\omega_n^2} \cdot \frac{\omega_n^2}{s(s +
+                                                2\zeta\omega_n)} X(s) \)
+
+
+                                            </p>
+
+                                            <h6>Clasification of Second Order Systems in function of damping (ζ)
+                                            </h6>
+                                            <ul style="text-align: left;">
+                                                <li>For ζ &lt; 1 (underdamped system), the system is
+                                                    oscillatory.
+                                                </li>
+                                                <li>For ζ = 1 (critically damped system), the system response is
+                                                    the
+                                                    fastest
+                                                    without oscillations.</li>
+                                                <li>For ζ &gt; 1 (overdamped system), the system is slow to
+                                                    respond,
+                                                    and
+                                                    there are no oscillations.</li>
+                                                <li>For ζ = 0 (undamped system), the system oscillates
+                                                    indefinitely
+                                                    without
+                                                    slowing down.</li>
+                                            </ul>
+
+                                            <p style="text-align: left;">
+                                                jsLSA works in the rank of underdamped oscillations
+
+                                            </p>
+                                            <p style="text-align: left;">
+                                                \[ 0 < \zeta < 1 \text{ (underdamped system)} \] </p>
+
+
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <h6>Second Order System as a Mechanical Interpretation</h6>
+                                            <div class="screenshot-holder">
+                                                <img class="img-fluid" src="assets/images/aq.png" alt="screenshot" />
+
+                                            </div>
+
+                                            <h6>Second Order response in closed-loop with amplification</h6>
+                                            <div class="screenshot-holder">
+                                                <img class="img-fluid" src="assets/images/amplifDiag.png"
+                                                    alt="screenshot" />
+
+                                            </div>
+                                        </div>
+
+
+                                    </div><!--//row-->
+                                </div><!--//section-block-->
+
+                                <div id="Dirac" class="section-block">
+                                    <h3 class="block-title">Dirac's Step Input Response</h3>
+                                    <p> jsLSA integrates the sum of all responses to a Dirac step input with amplitude
+                                        equal to the function's amplitude.
+                                    </p>
+                                    <div class="row simplelightbox-gallery-2">
+                                        <div class="col-md-6 col-12">
+                                            <h6>Laplacian representation of a Dirac's Step:</h6>
+                                            <p style="text-align: center;">\( R(s)=\frac{1}{s} \)</p>
+                                            <h6>For underdamped rank:</h6>
+                                            <p style="text-align: center;">\(H(s) = \frac{\omega_n^2}{s(s +
+                                                2\zeta\omega_n)} \)</p>
+
+                                            <h6>Inversing the Laplacian function to time domain:</h6>
+                                            <p style="text-align: center;">\(y(t) = 1 - e^{-\delta \omega_n t}
+                                                \left(\cos(\sqrt{1-\delta^2}\omega_n t) +
+                                                \frac{\delta}{\sqrt{1-\delta^2}}\sin(\sqrt{1-\delta^2}\omega_n
+                                                t)\right)\)</p>
+                                            <ul>
+                                                <li>\(y(t)\) is the step response in time.</li>
+                                                <li>\(\delta\) is the damping coefficient (damping ratio).</li>
+                                                <li>\(\omega_n\) is the undamped natural frequency of the system.</li>
+                                                <li>\(\omega_d\) is the damped angular frequency, given by \(\omega_d =
+                                                    \omega_n \sqrt{1-\delta^2}\).</li>
+                                            </ul>
+
+                                            <h6>Reducing the response equation</h6>
+                                            <p style="text-align: center;">\(y(t) = 1 - e^{-\delta \omega_n t}
+                                                \left(\cos(\omega_d t) + \frac{\delta}{\sqrt{1-\delta^2}}\sin(\omega_d
+                                                t)\right)\)</p>
+
+                                            <h6>Calculating a non-unitary step in function of u(t)</h6>
+                                            <p style="text-align: center;">\(y(t) = u(t) - u(t) e^{-\delta \omega_n t}
+                                                \left(\cos(\omega_d t) + \frac{\delta}{\sqrt{1-\delta^2}}\sin(\omega_d
+                                                t)\right)\)</p>
+
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <h6>Dirac's Step Graphical overview</h6>
+                                            <div class="screenshot-holder">
+                                                <img class="img-fluid" height="60" src="assets/images/stepDirac.jpg"
+                                                    alt="screenshot" />
+
+                                            </div>
+
+                                            <h6>Underdamped Dirac's Step response</h6>
+                                            <div class="screenshot-holder">
+                                                <img class="img-fluid" src="assets/images/underdamped.jpg"
+                                                    alt="screenshot" />
+
+                                            </div>
+                                        </div>
+
+
+                                    </div><!--//row-->
+                                </div><!--//section-block-->
+
+
+                                <div id="Convolution" class="section-block">
+                                    <h3 class="block-title">Convolution of Signals</h3>
+                                    <p> jsLSA works convoluting the signals following the Convolution Theorem of
+                                        Signals. The convolucion of signas <span style="text-align: center;">\( f*g
+                                            \)</span> produces a new signal
+                                        <span style="text-align: center;">\( h \)</span> that indicates how one wave
+                                        changes respect to the other one.
+                                    </p>
+                                    <div class="row simplelightbox-gallery-2">
+                                        <div class="col-md-6 col-12">
+                                            <p>Convolution definition for a definited time space:</p>
+                                            <p style="text-align: center;">
+                                                \( (f \ast g_{T})(t) \equiv \int _{t_{0}}^{t_{0}+T}\left[\sum
+                                                _{k=-\infty }^{\infty }f(\tau +kT)\right]g_{T}(t-\tau )\,d\tau \)
+                                            </p>
+                                            <p>Discretized convolution as Sum of signals:</p>
+
+                                            <p style="text-align: center;">
+                                                \( (f \ast g)[n] = \sum_{m=-\infty}^{\infty} f[m] \cdot g[n-m] \)
+                                            </p>
+                                            <h6>Convolution vissual overview</h6>
+                                            <div class="screenshot-holder">
+                                                <img class="img-fluid" src="assets/images/consum.gif"
+                                                    alt="screenshot" />
+
+                                            </div>
+
+
+
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <h6>Convolution of 2 deltas</h6>
+                                            <div class="screenshot-holder">
+                                                <img class="img-fluid" height="60" src="assets/images/conv2.jpg"
+                                                    alt="screenshot" />
+
+                                            </div>
+
+
+                                        </div>
+
+
+                                    </div><!--//row-->
+                                </div><!--//section-block-->
+
+                                <div id="results" class="section-block">
+                                    <h3 class="block-title">Distribution of results</h3>
+                                    <p> The management of time delay is crucial so that the onset of the step input
+                                        response begins deltaT seconds after the previous position of the discretized
+                                        input.
+                                    </p>
+                                    <div class="row simplelightbox-gallery-2">
+                                        <div class="col-md-6 col-12">
+                                            <p>Convolution definition for a definited time space:</p>
+                                            <p style="text-align: center;">
+                                                \[
+                                                \begin{matrix}
+                                                Y_{00} & Y_{01} & Y_{02} & Y_{03} & \cdots & a_{m (n-m)} & \cdots \\
+                                                0 & Y_{10} & Y_{11} & Y_{12} & \cdots & a_{m(n-m)} & \cdots \\
+                                                0 & 0 & Y_{20} & Y_{21} & \cdots & a_{m(n-m)} & \cdots \\
+                                                0 & 0 & 0 & Y_{30} & \cdots & a_{m(n-m)} & \cdots \\
+                                                \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \ddots \\
+                                                a_{n(n-m)} & a_{m(n-m)} & a_{m(n-m)} & a_{m(n-m)} & \cdots & a_{m(n-m)}
+                                                & \cdots \\
+                                                \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \ddots \\
+                                                \end{matrix}
+                                                \]
+                                            </p>
+
+
+
+
+
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <h6>Visualization of the Triangular Upper Matrix</h6>
+                                            <p>In this case the response calculating it's being delayed each iteration:
+                                            </p>
+                                            <div class="screenshot-holder">
+                                                <img class="img-fluid" src="assets/images/convCl.png"
+                                                    style="width: 300px;" alt="screenshot" />
+
+                                            </div>
+
+
+                                        </div>
+                                    </div><!--//row-->
+                                </div><!--//section-block-->
+
+                                <div id="scope" class="section-block">
+                                    <h3 class="block-title">Understanding the scope</h3>
+                                    <p> The management of time delay is crucial so that the onset of the step input
+                                        response begins deltaT seconds after the previous position of the discretized
+                                        input.
+                                    </p>
+                                    <div class="row simplelightbox-gallery-2">
+                                        <div class="col-md-6 col-12">
+                                            <h6>Static Analysis</h6>
+                                            <p>The green area holds values that are part of the response signal:</p>
+                                            <div class="screenshot-holder">
+                                                <img class="img-fluid" src="assets/images/mat2.png" alt="screenshot" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <h6>RealTime Analysis</h6>
+                                            <p>
+                                                In this visualization, a range of 10 deltas is taken for each iteration.
+                                                Purple values are unreachable by the simulation, so they are not
+                                                calculated, freeing the integrator from computing non-essential values.
+                                                As bigger the scope more accurate results. But mure resources
+                                                consumption in terms of memory and processing power.</p>
+                                            <div class="screenshot-holder">
+                                                <img class="img-fluid" src="assets/images/mat.png" alt="screenshot" />
+
+
+                                            </div>
+
+
+                                        </div>
+
+                                    </div><!--//row-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+
+                            <section id="Accuracy" class="doc-section">
+                                <h2 class="section-title">Accuracy</h2>
+                                <p>
+                                    jsLSA has been meticulously crafted with a focus on accuracy and efficiency to provide a fast and reliable integrator for both development and research purposes. Our aim is not just to approximate, but to deliver results that closely align with the ideal case.
+                                </p>
+                                
+                                <h6>Stringent accuracy standards:</h6>
+                                <p>
+                                    To validate and ensure the accuracy of results, the logic has undergone rigorous testing against high-tech, quality software. A Matlab Suite guarantees that the code produces meaningful and precise responses.
+                                </p>
+
+                                <div id="Matlab" class="section-block">
+                                    <h3 class="block-title">Matlab lSim</h3>
+                                    <p>Mainly, it is necessary to grasp the concept of integration visually in order to
+                                        create an integration method</p>
+                                    <div class="row simplelightbox-gallery-2">
+                                        <div class="col-md-12 col-12">
+                                            <h6>Definited Riemann Integral</h6>
+                                            <div class="screenshot-holder">
+                                                <img class="img-fluid"
+                                                        src="assets/images/matlabjslsa.png"/>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-12">
+                                            <h6>Comparison against the original lsim Matlab algorithm</h6>
+                                            <div class="screenshot-holder">
+                                                <a href="assets/images/demo/appify-project.jpg"><img class="img-fluid"
+                                                        src="assets/images/lsimjslsa.png" alt="screenshot" /></a>
+
+                                            </div>
+                                        </div>
+                                        <p>For this simulation a transfer function has been declared as follows:</p>
+                                        <script src="https://gist.github.com/TIMdavidIglesias/86f22aaf6f4591dec445530c9eee8d8e.js"></script>
+                                        <p ><strong >With 100 samples de accuracy its higher 99%</strong></p>
+                                        <p>The interpretation of the integration can be defined as the code below:</p>
+                                        <h6>Convolution test in matlab for Static Analysis</h6>
+                                        <script src="https://gist.github.com/TIMdavidIglesias/6ac10344f5ee6635278ef5a098e0ca89.js"></script>
+
+                                    </div><!--//row-->
+                                </div><!--//section-block-->
+
+                            </section><!--//doc-section-->
+                        </div><!--//content-inner-->
+                    </div><!--//doc-content-->
+                    <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
+                        <div id="doc-nav" class="doc-nav">
+                            <ul id="doc-menu" class="nav doc-menu flex-column sticky">
+                                <li class="nav-item">
+                                    <a class="nav-link scrollto" href="#Overview">jsLSA Overview</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link scrollto" href="#Mathematical">Mathematical Principles</a>
+                                </li>
+                                <li class="nav-item">
+                                    <ul class="nav doc-sub-menu nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#integratior">Programatic integratior</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#Systems">Second Order Systems</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#Dirac">Dirac's Step Input Response</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#Convolution">Convolution of Signals</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#results">Distribution of results</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#scope">Understanding the scope</a>
+                                        </li>
+                                    </ul><!--//nav-->
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link scrollto" href="#Accuracy">Accuracy</a>
+                                </li>
+                                <li class="nav-item">
+                                    <ul class="nav doc-sub-menu nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#Matlab">Matlab lSim</a>
+                                        </li>
+
+                                    </ul><!--//nav-->
+                                </li>
+                            </ul><!--//doc-menu-->
+                        </div><!--//doc-nav-->
+                    </div><!--//doc-sidebar-->
+                </div><!--//doc-body-->
+            </div><!--//container-->
+        </div><!--//doc-wrapper-->
+
+        <div id="promo-block" class="promo-block" style="background-color: white">
+            <div class="container" >
+                <div class="promo-block-inner">
+                    <h3 class="promo-title text-center" style="color:black"><i class="fas fa-heart" style="color:black"></i> Are you a researcher or developer looking for any other LSA version? maybe pyLSA, jLSA or cLSA?</h3>
+                    <div class="row">
+                        <div class="figure-holder col-lg-5 col-md-6 col-12">
+                            <div class="figure-holder-inner">
+                                <img class="img-fluid" src="assets/images/og-social.png"
+                                        alt="Instance Theme" />
+
+
+                            </div>
+                        </div><!--//figure-holder-->
+                        <div class="content-holder col-lg-7 col-md-6 col-12">
+                            <div class="content-holder-inner">
+                                <div class="desc">
+                                    <h4 class="content-title" style="color:black"><strong> Get in touch by sending an email to: davidoff.igle@gmail.com</strong></h4>
+                                    <p style="color:black">Check out my other repos at: <a
+                                            href="https://github.com/TIMdavidIglesias/"
+                                            target="_blank">Github</a> 
+                                    </p>
+                                    <a class="btn btn-cta"
+                                        href="https://codesandbox.io/p/sandbox/xenodochial-violet-428ylt?file=%2Fsrc%2FRealTimeAnalysis.js%3A101%2C44&layout=%257B%2522sidebarPanel%2522%253A%2522EXPLORER%2522%252C%2522rootPanelGroup%2522%253A%257B%2522direction%2522%253A%2522horizontal%2522%252C%2522contentType%2522%253A%2522UNKNOWN%2522%252C%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522id%2522%253A%2522ROOT_LAYOUT%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522UNKNOWN%2522%252C%2522direction%2522%253A%2522vertical%2522%252C%2522id%2522%253A%2522clqiw42ta00062v6e7z8adil5%2522%252C%2522sizes%2522%253A%255B70%252C30%255D%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522EDITOR%2522%252C%2522direction%2522%253A%2522horizontal%2522%252C%2522id%2522%253A%2522EDITOR%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL%2522%252C%2522contentType%2522%253A%2522EDITOR%2522%252C%2522id%2522%253A%2522clqiw42ta00022v6ewppn8sw3%2522%257D%255D%257D%252C%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522SHELLS%2522%252C%2522direction%2522%253A%2522horizontal%2522%252C%2522id%2522%253A%2522SHELLS%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL%2522%252C%2522contentType%2522%253A%2522SHELLS%2522%252C%2522id%2522%253A%2522clqiw42ta00032v6ej37w1dsz%2522%257D%255D%252C%2522sizes%2522%253A%255B100%255D%257D%255D%257D%252C%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522DEVTOOLS%2522%252C%2522direction%2522%253A%2522vertical%2522%252C%2522id%2522%253A%2522DEVTOOLS%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL%2522%252C%2522contentType%2522%253A%2522DEVTOOLS%2522%252C%2522id%2522%253A%2522clqiw42uw000i2v6evymmt22i%2522%257D%255D%252C%2522sizes%2522%253A%255B100%255D%257D%255D%252C%2522sizes%2522%253A%255B56.20084862397577%252C43.79915137602423%255D%257D%252C%2522tabbedPanels%2522%253A%257B%2522clqiw42ta00022v6ewppn8sw3%2522%253A%257B%2522id%2522%253A%2522clqiw42ta00022v6ewppn8sw3%2522%252C%2522tabs%2522%253A%255B%257B%2522id%2522%253A%2522clqjkgms700022v6eqai8fdib%2522%252C%2522mode%2522%253A%2522permanent%2522%252C%2522type%2522%253A%2522FILE%2522%252C%2522initialSelections%2522%253A%255B%257B%2522startLineNumber%2522%253A20%252C%2522startColumn%2522%253A14%252C%2522endLineNumber%2522%253A20%252C%2522endColumn%2522%253A14%257D%255D%252C%2522filepath%2522%253A%2522%252Fsrc%252FjsLSA%252FRealTimeConvolution.js%2522%252C%2522state%2522%253A%2522IDLE%2522%257D%252C%257B%2522id%2522%253A%2522clqjkj92100022v6ex04qs534%2522%252C%2522mode%2522%253A%2522permanent%2522%252C%2522type%2522%253A%2522FILE%2522%252C%2522initialSelections%2522%253A%255B%257B%2522startLineNumber%2522%253A101%252C%2522startColumn%2522%253A44%252C%2522endLineNumber%2522%253A101%252C%2522endColumn%2522%253A44%257D%255D%252C%2522filepath%2522%253A%2522%252Fsrc%252FRealTimeAnalysis.js%2522%252C%2522state%2522%253A%2522IDLE%2522%257D%255D%252C%2522activeTabId%2522%253A%2522clqjkj92100022v6ex04qs534%2522%257D%252C%2522clqiw42ta00032v6ej37w1dsz%2522%253A%257B%2522tabs%2522%253A%255B%255D%252C%2522id%2522%253A%2522clqiw42ta00032v6ej37w1dsz%2522%257D%252C%2522clqiw42uw000i2v6evymmt22i%2522%253A%257B%2522id%2522%253A%2522clqiw42uw000i2v6evymmt22i%2522%252C%2522activeTabId%2522%253A%2522clqj36dwt00ok2v6epx7dtda3%2522%252C%2522tabs%2522%253A%255B%257B%2522type%2522%253A%2522SANDBOX_ONBOARDING%2522%252C%2522id%2522%253A%2522sandbox-onboarding%2522%252C%2522mode%2522%253A%2522permanent%2522%257D%252C%257B%2522type%2522%253A%2522UNASSIGNED_PORT%2522%252C%2522port%2522%253A0%252C%2522id%2522%253A%2522clqj36dwt00ok2v6epx7dtda3%2522%252C%2522mode%2522%253A%2522permanent%2522%252C%2522path%2522%253A%2522%252F%2522%257D%255D%257D%257D%252C%2522showDevtools%2522%253Atrue%252C%2522showShells%2522%253Atrue%252C%2522showSidebar%2522%253Atrue%252C%2522sidebarPanelSize%2522%253A15%257D"
+                                        target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+
+                                </div><!--//desc-->
+
+
+                                <div class="author"><a href="https://timdevelopers.com">David Iglesias</a></div>
+                            </div><!--//content-holder-inner-->
+                        </div><!--//content-holder-->
+                    </div><!--//row-->
+                </div><!--//promo-block-inner-->
+            </div><!--//container-->
+        </div><!--//promo-block-->
+
+    </div><!--//page-wrapper-->
+
+    <footer id="footer" class="footer text-center">
+        <div class="container">
+            <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+            <small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart"></i> by <a
+                    href="https://timdevelopers.com/" target="_blank">David Iglesias</a> for developers</small>
+
+        </div><!--//container-->
+    </footer><!--//footer-->
+
+
+    <!-- Main Javascript -->
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/prism/prism.js"></script>
+    <script src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
+    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script>
+    <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
